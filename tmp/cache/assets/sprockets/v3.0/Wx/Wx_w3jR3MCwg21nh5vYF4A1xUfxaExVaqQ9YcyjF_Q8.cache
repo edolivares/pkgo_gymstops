@@ -1,0 +1,28 @@
+I"(function() {
+  $(function() {
+    var PokeIcon, googlelayer, marker, mymap, pokestop;
+    mymap = L.map('mapid').setView([-29.9330181, -71.2419626], 13);
+    PokeIcon = L.Icon.extend({
+      options: {
+        iconSize: [32, 32],
+        popupAnchor: [0, -15]
+      }
+    });
+    pokestop = new PokeIcon({
+      iconUrl: '/assets/pokestop-88d94b45fdafe41084645d2573b709e44603f7edeb5d62e87a9bb240db594232.png'
+    });
+    googlelayer = new L.Google("ROADMAP");
+    mymap.addLayer(googlelayer);
+    marker = L.marker([-29.905796, -71.250885], {
+      icon: pokestop
+    }).addTo(mymap).bindPopup("I am a green leaf.");
+    marker = L.marker([-29.905773, -71.251190], {
+      icon: pokestop
+    }).addTo(mymap).bindPopup("I am a green leaf.");
+    return marker = L.marker([-29.905865, -71.251472], {
+      icon: pokestop
+    }).addTo(mymap).bindPopup("I am a green leaf.");
+  });
+
+}).call(this);
+:ET

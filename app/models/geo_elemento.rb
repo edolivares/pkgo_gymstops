@@ -1,0 +1,2 @@
+class GeoElemento < ApplicationRecord
+end

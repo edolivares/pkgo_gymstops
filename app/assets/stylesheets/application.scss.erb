@@ -1,0 +1,31 @@
+
+   @import "materialize/components/color";
+   $primary-color: color("red", "darken-2") !default;
+   @import "materialize";
+   @import "home";
+   @import "L.Control.Locate.min";
+   @import "font-awesome-sprockets";
+   @import "font-awesome";
+   
+
+
+
+
+  main {
+    flex: 1 0 auto;
+  }
+  
+ .leaflet-google-layer{
+    z-index: 0 !important;
+}
+.leaflet-map-pane{
+    z-index: 100;
+}
+
+#cover {
+    background: url(<%= asset_path('loader.gif') %>) no-repeat scroll center center / 300px #ff6c6c ;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1001;
+}

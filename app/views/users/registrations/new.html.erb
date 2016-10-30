@@ -1,0 +1,55 @@
+<% content_for :titulo, "Crea tu cuenta en Go-Stops" %>
+<% content_for :descripcion, "Crea tu cuenta en Go-Stops para comienzar a registrar las pokeparadas y gimnasios de tu ciudad y así ganar ranking en tu región!" %>
+<% content_for :canonical, "http://go-stops.com/registrarse" %>
+<% content_for :robots, "index,follow" %>
+
+<h4 class="center-align">Registrarse en Go-Stops</h4>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => "login-form"}) do |f| %>
+
+   <div class="row margin" style="margin-bottom: 0px;">
+      <div class="input-field col s12">
+         <i class="mdi-social-person-outline prefix"></i>
+         <%= f.input :email, required: true, autofocus: true, wrapper: false, label: false, placeholder: "email@dominio.com", input_html: { class: 'validate' } %>
+         <%= f.label :email, 'Email', :data => {:error => 'Formato incorrecto.'} %>
+      </div>
+   </div>
+
+   <div class="row margin">
+      <div class="input-field col s12">
+         <i class="mdi-social-person-outline prefix"></i>
+         <%= f.input :username, required: true, wrapper: false, label: "Nombre de usuario" %>
+      </div>
+   </div>
+
+   <div class="row margin" style="margin-bottom: 0px;">
+      <div class="input-field col s12">
+         <i class="mdi-action-lock-outline prefix"></i>
+         <%= f.input :password, required: true, wrapper: false, label: "Contraseña", placeholder: "Mínimo #{@minimum_password_length} carácteres" if @minimum_password_length %>
+      </div>
+   </div>
+
+   <div class="row margin">
+      <div class="input-field col s12">
+         <i class="mdi-action-lock-outline prefix"></i>
+         <%= f.input :password_confirmation, required: true, wrapper: false, label: "Vuelva a escribir la contraseña" %>
+      </div>
+   </div>
+
+   <div class="row margin">
+      <div class="input-field col s12">
+         <%= f.submit "Registrarse", class: "col s12 btn" %>
+      </div>
+      <div class="input-field col s12" style="margin-top:10px;">
+         <%= link_to omniauth_authorize_path(resource_name, :facebook), {:class => "btn btn-block btn-social btn-facebook"} do %>
+            <span class="fa fa-facebook"></span> Iniciar sesión con Facebook
+         <% end %>
+      </div>
+   </div>
+
+   <div class="divider"></div>
+
+   <div class="row">
+      <%= render "users/shared/links" %>      
+   </div>
+<% end %> 

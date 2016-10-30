@@ -1,0 +1,67 @@
+window.App ||= {}
+
+App.init = ->
+   map = L.map('mapid').setView([
+     -29.9330181
+     -71.2419626
+   ], 12)
+
+   googlelayer= new L.Google("ROADMAP")
+   map.addLayer googlelayer
+
+   
+
+   onEachFeature = (feature, layer) ->
+     if feature.properties and feature.properties.popupContent
+       layer.bindPopup feature.properties.popupContent
+     return
+
+   PokeIcon = L.Icon.extend(options:
+     iconSize: [32, 32]
+     iconAnchor: [0, 32]
+     popupAnchor: [16, -32]
+   )
+
+   pokestop = new PokeIcon(iconUrl: '<%= asset_path('pokestop.png') %>')
+   
+   $.getJSON '/geopuntos/pokestops.json', (data) ->
+      L.geoJson(data,
+      pointToLayer: (feature, latlng) ->
+         L.marker latlng, icon: pokestop,
+      onEachFeature: onEachFeature).addTo map
+      return
+
+   GymIcon = L.Icon.extend(options:
+     iconSize: [32, 32]
+     iconAnchor: [12, 32]
+     popupAnchor: [0, -32]
+   )
+
+   gym = new GymIcon(iconUrl: '<%= asset_path('gym.png') %>')
+
+   $.getJSON '/geopuntos/gyms.json', (data) ->
+      L.geoJson(data,
+      pointToLayer: (feature, latlng) ->
+         L.marker latlng, icon: gym,
+      onEachFeature: onEachFeature).addTo map
+      return
+
+   lc = L.control.locate(
+      drawCircle: true
+      circlePadding: [0, 0]
+      locateOptions: {
+         setView: false
+         watch: true
+      }
+      strings: {
+       title: "Haz click para ver/cancelar tu ubicación."
+       popup: "Tu ubicación"
+       outsideMapBoundsMsg: "You seem located outside the boundaries of the map" 
+      }
+   ).addTo(map)
+   lc.start()
+   
+
+$(document).on "turbolinks:load", ->
+   App.init()
+   $('#cover').fadeOut 1000

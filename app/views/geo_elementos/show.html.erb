@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @geo_elemento.name %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @geo_elemento.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @geo_elemento.longitude %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @geo_elemento.tipo %>
+</p>
+
+<p>
+  <strong>Votes:</strong>
+  <%= @geo_elemento.votes %>
+</p>
+
+<%= link_to 'Edit', edit_geo_elemento_path(@geo_elemento) %> |
+<%= link_to 'Back', geo_elementos_path %>

@@ -1,0 +1,42 @@
+I"<(function() {
+  $(function() {
+    var GymIcon, PokeIcon, googlelayer, gym, marker, mymap, pokestop;
+    mymap = L.map('mapid').setView([-29.9330181, -71.2419626], 13);
+    PokeIcon = L.Icon.extend({
+      options: {
+        iconSize: [32, 32],
+        iconAnchor: [0, 32],
+        popupAnchor: [16, -32]
+      }
+    });
+    GymIcon = L.Icon.extend({
+      options: {
+        iconSize: [32, 32],
+        iconAnchor: [0, 32],
+        popupAnchor: [-25, -32]
+      }
+    });
+    pokestop = new PokeIcon({
+      iconUrl: '/assets/pokestop-93043293465c456b8f3b41151d9540691a3a2927a840a5048b5b5c205fc378b3.png'
+    });
+    gym = new GymIcon({
+      iconUrl: '/assets/gym-38b2371ae91a7eab22e4af74004f7e2888de17bbb9d6470f6dfbada8e98f72ee.png'
+    });
+    googlelayer = new L.Google("ROADMAP");
+    mymap.addLayer(googlelayer);
+    marker = L.marker([-29.905796, -71.250885], {
+      icon: pokestop
+    }).addTo(mymap).bindPopup("I am a green leaf.");
+    marker = L.marker([-29.905773, -71.251190], {
+      icon: pokestop
+    }).addTo(mymap).bindPopup("I am a green leaf.");
+    marker = L.marker([-29.905842, -71.251472], {
+      icon: pokestop
+    }).addTo(mymap).bindPopup("I am a green leaf.");
+    return marker = L.marker([-29.905270, -71.256317], {
+      icon: gym
+    }).addTo(mymap).bindPopup("I am a green leaf.");
+  });
+
+}).call(this);
+:ET

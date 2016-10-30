@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+  <head>
+    <title><%= yield(:titulo) %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'login_regis', media: 'all', 'data-turbolinks-track': 'reload' %>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <meta charset="utf-8">
+
+   <!-- Website -->
+   <meta name="title" content="<%= yield(:titulo) %>">
+   <meta name="description" content="<%= yield(:descripcion) %>">
+   <meta name="author" content="Coding Cat">
+   <meta name="owner" content="codingcat.cl">
+   <link rel="canonical" href="<%= yield(:canonical) %>">
+   <meta name="google-site-verification" content="5WVkxWney51FUcdMu7tP1mj02LYZuiWnNKC9LlyC9Ms">
+   <meta name="robots" content="noindex,nofollow<%= yield(:robots) %>">
+
+   <!-- Facebook -->
+   <meta property="og:site_name" content="Go Stops" />
+   <meta property="og:url" content="<%= yield(:canonical) %>" />
+   <meta property="og:type" content="website" />
+   <meta property="og:title" content="<%= yield(:titulo) %>" />
+   <meta property="og:description" content="<%= yield(:descripcion) %>" />
+   <meta property="og:image" content="http://go-stops.com<%= asset_path('pokeball-logo-facebook-chica.png') %>" />
+   <meta property="og:image:type" content="image/png" />
+   <meta property="og:image:width" content="200px" />
+   <meta property="og:image:height" content="200px" />
+
+   <meta property="fb:app_id" content="249233255477295" />
+
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+ 
+  </head>
+
+  <body>
+      <header>
+         <nav class="z-depth-2">
+            <div class="nav-wrapper">
+               <div class="container">
+                  <a href="<%= home_path %>" class="brand-logo center"><img src="<%= asset_path('pokeball-logo.png') %>" alt="Logo Go-Stops" class="img-responsive" style="height:45px;"></a> 
+               </div> 
+            </div>
+         </nav>
+      </header>
+
+      <!-- <div id="cover"></div> -->
+     
+      <main>
+         <div class="container">
+            <div class="row" style="padding-top:20px;">
+            <% if notice %>
+                  <div class="col s12 m12 l12" style="padding: 0px;">
+                    <div class="card-panel teal accent-4 z-depth-4">
+                      <span class="white-text">
+                        <%= notice %>
+                      </span>
+                    </div>
+                  </div>
+            <% end %>
+            <% if alert %>
+                  <div class="col s12 m12 l12" style="padding: 0px;">
+                    <div class="card-panel red z-depth-1">
+                      <span class="white-text">
+                        <%= alert %>
+                      </span>
+                    </div>
+                  </div>
+            <% end %>
+
+               <div class="col s12 m7 l7 z-depth-6 card-panel hoverable" style="padding: 0 40px;">
+                  <%= yield %>
+               </div>
+               <div class="col s12 m5 l5">
+               </div>
+             </div>
+         </div>
+      </main>
+
+      <footer class="page-footer">
+         <div class="container">
+            <div class="row">
+               <div class="col l6 s12">
+                  <h5 class="white-text">Contenido del sitio</h5>
+                  <p class="grey-text text-lighten-4">Web de ayuda hecha por pokefans para pokefans.</p>
+               </div>
+               <div class="col l4 offset-l2 s12">
+                  <h5 class="white-text">Enlaces</h5>
+                      <!-- <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                      </ul> -->
+               </div>
+            </div>
+         </div>
+         <div class="footer-copyright">
+            <div class="container">© 2016 Codingcat</div>
+         </div>
+      </footer>
+           
+            
+     
+      
+
+        <!-- Page Content goes here -->
+      
+      <!--    <p class="notice"><%= notice %></p>
+         <p class="alert"><%= alert %></p> -->
+      
+
+  </body>
+   <%= javascript_include_tag 'base', 'data-turbolinks-track': 'reload' %>
+   <%= render "layouts/google_analytics" %>
+  
+</html>

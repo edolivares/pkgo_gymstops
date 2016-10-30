@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Geo Elementos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Tipo</th>
+      <th>Votes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @geo_elementos.each do |geo_elemento| %>
+      <tr>
+        <td><%= geo_elemento.name %></td>
+        <td><%= geo_elemento.latitude %></td>
+        <td><%= geo_elemento.longitude %></td>
+        <td><%= geo_elemento.tipo %></td>
+        <td><%= geo_elemento.votes %></td>
+        <td><%= link_to 'Show', geo_elemento %></td>
+        <td><%= link_to 'Edit', edit_geo_elemento_path(geo_elemento) %></td>
+        <td><%= link_to 'Destroy', geo_elemento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Geo Elemento', new_geo_elemento_path %>

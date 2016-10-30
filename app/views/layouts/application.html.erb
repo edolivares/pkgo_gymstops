@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+  <head>
+    <title>Chile-GO! - Pokeparadas, gimnasios y más!</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+   <link rel="stylesheet" href="https://npmcdn.com/leaflet@0.7.7/dist/leaflet.css" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <meta charset="utf-8">
+
+   <!-- Website -->
+   <meta name="title" content="Pokemon Chile-GO! - Pokeparadas, gimnasios y más!">
+   <meta name="description" content="Mapa colaborativo con las pokeparadas y gimnasios de Pokemon Go en Chile.">
+   <meta name="keywords" content="pokemon go chile, pokeparadas y gimnasios pokemon go chile, mapa pokemon go chile">
+   <meta name="author" content="Coding Cat">
+   <meta name="owner" content="codingcat.cl">
+   <link rel="canonical" href="http://go-stops.com">
+   <meta name="google-site-verification" content="5WVkxWney51FUcdMu7tP1mj02LYZuiWnNKC9LlyC9Ms">
+   <meta name="robots" content="index,follow">
+
+   <!-- Facebook -->
+   <meta property="og:site_name" content="Go Stops" />
+   <meta property="og:url" content="http://go-stops.com" />
+   <meta property="og:type" content="website" />
+   <meta property="og:title" content="Pokemon Chile-GO! - Pokeparadas, gimnasios y más!" />
+   <meta property="og:description" content="Mapa colaborativo con las pokeparadas y gimnasios de Pokemon Go en Chile." />
+   <meta property="og:image" content="http://go-stops.com<%= asset_path('pokeball-logo-facebook-chica.png') %>" />
+   <meta property="og:image:type" content="image/png" />
+   <meta property="og:image:width" content="200px" />
+   <meta property="og:image:height" content="200px" />
+
+   <meta property="fb:app_id" content="249233255477295" />
+
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+ 
+    <script src="https://npmcdn.com/leaflet@0.7.7/dist/leaflet.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0orSddf3Y7klTSWNn-e31ezZVy0kV0Qc"></script>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render "layouts/google_analytics" %>
+  </head>
+
+  <body>
+      <div id="cover"></div>
+     
+
+         <div style="padding:0;">
+            <nav class="navbar z-depth-2">
+             <div class="nav-wrapper">
+               <a href="<%= home_path %>" class="brand-logo center"><img src="<%= asset_path('pokeball-logo.png') %>" alt="Logo Go-Stops" class="img-responsive" style="height:45px;"></a> 
+             </div>
+           </nav>
+            <%= yield %>
+         </div>
+         <div style="padding:0;" id="sidebar">
+            <div style="padding: 0 0.75rem;">
+               <blockquote class="z-depth-3" style="text-align : justify; padding-right: 10px;">
+                  <br>
+                  Este sitio es creado con la única finalidad de aportar, junto a la comunidad de jugadores activos, con la localización de las pokeparadas de Chile.
+                  <br><br>
+                  Este sitio aún se encuentra en desarrollo, por lo que se avanzará en la medida que se pueda, agregando nuevas características y actualizaciones en tiempo real. La principal característica en desarrollo es la capacidad de los futuros usuarios de agregar las pokeparadas faltantes.
+                  <br><br>
+                  Aún se está trabajando en las pokeparadas de La Serena, por lo que pido paciencia :D!
+                  <br><br>
+               </blockquote>
+            </div>
+            
+            <footer class="page-footer">
+                <div class="container">
+                  <div class="row">
+                    <div class="col l6 s12">
+                      <h5 class="white-text">Contenido del sitio</h5>
+                      <p class="grey-text text-lighten-4">Web de ayuda hecha por pokefans para pokefans.</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                      <h5 class="white-text">Enlaces</h5>
+                      <!-- <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                      </ul> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="footer-copyright">
+                  <div class="container">
+                  © 2016 Codingcat
+                  <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
+                  </div>
+                </div>
+              </footer>
+         </div>
+     
+      
+
+        <!-- Page Content goes here -->
+      
+      <!--    <p class="notice"><%= notice %></p>
+         <p class="alert"><%= alert %></p> -->
+      
+
+  </body>
+  
+</html>

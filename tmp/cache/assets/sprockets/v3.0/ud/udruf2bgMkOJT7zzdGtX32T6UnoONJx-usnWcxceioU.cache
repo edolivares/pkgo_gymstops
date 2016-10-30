@@ -1,0 +1,10 @@
+I"Ý(function() {
+  $(function() {
+    var googlelayer, mymap;
+    mymap = L.map('mapid').setView([51.505, -0.09], 13);
+    googlelayer = new L.Google("ROADMAP");
+    return mymap.addLayer(googlelayer);
+  });
+
+}).call(this);
+:ET

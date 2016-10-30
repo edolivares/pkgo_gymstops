@@ -1,0 +1,11 @@
+I"(function() {
+  $(function() {
+    var googlelayer, marker, mymap;
+    mymap = L.map('mapid').setView([51.505, -0.09], 13);
+    googlelayer = new L.Google("ROADMAP");
+    mymap.addLayer(googlelayer);
+    return marker = L.marker([51.5 - 0.09]).addTo(mymap);
+  });
+
+}).call(this);
+:ET

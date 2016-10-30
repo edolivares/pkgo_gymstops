@@ -1,0 +1,35 @@
+
+<h5 class="center-align" style="margin-bottom:20px;">Completar registro</h5>
+
+
+<%= simple_form_for @user, :url => omni_completar_registro_path, :html => {:class => "login-form", :method => :post} do |f| %>
+
+   <div class="row margin">
+      <div class="input-field col s12">
+         <i class="mdi-social-person-outline prefix"></i>
+         <%= f.input :username, required: true, wrapper: false, label: "Nombre de usuario" %>
+      </div>
+   </div>
+
+   <div class="row margin">
+      <div class="input-field col s12">
+         <i class="mdi-social-person-outline prefix"></i>
+         <%= f.input :name, required: true, wrapper: false, label: "Nombre de usuario" %>
+      </div>
+   </div>
+
+   <div class="row margin">
+      <div class="input-field col s12">
+         <i class="mdi-social-person-outline prefix"></i>
+         <%= f.input :last_name, required: true, wrapper: false, label: "Nombre de usuario" %>
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="input-field col s12">
+         <%= f.submit "Guardar", class: "btn waves-effect waves-light col s12" %>
+      </div>
+   </div>
+
+
+<% end %>

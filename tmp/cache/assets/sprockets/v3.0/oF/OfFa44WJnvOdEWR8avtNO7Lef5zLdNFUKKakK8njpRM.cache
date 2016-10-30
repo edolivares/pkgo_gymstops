@@ -1,0 +1,48 @@
+I"s(function() {
+  $(function() {
+    var GymIcon, PokeIcon, googlelayer, gym, map, onEachFeature, pokestop;
+    map = L.map('mapid').setView([-29.9330181, -71.2419626], 13);
+    PokeIcon = L.Icon.extend({
+      options: {
+        iconSize: [32, 32],
+        iconAnchor: [0, 32],
+        popupAnchor: [16, -32]
+      }
+    });
+    GymIcon = L.Icon.extend({
+      options: {
+        iconSize: [32, 32],
+        iconAnchor: [12, 32],
+        popupAnchor: [25, -32]
+      }
+    });
+    pokestop = new PokeIcon({
+      iconUrl: '/assets/pokestop-93043293465c456b8f3b41151d9540691a3a2927a840a5048b5b5c205fc378b3.png'
+    });
+    gym = new GymIcon({
+      iconUrl: '/assets/gym-38b2371ae91a7eab22e4af74004f7e2888de17bbb9d6470f6dfbada8e98f72ee.png'
+    });
+    googlelayer = new L.Google("ROADMAP");
+    map.addLayer(googlelayer);
+    onEachFeature = function(feature, layer) {
+      console.log(feature);
+      layer.bindPopup(feature.properties.titulo);
+    };
+    $.getJSON('/geopuntos/pokestops.json', function(data) {
+      console.log(JSON.stringify(data));
+      return L.geoJson(JSON.stringify(data), {
+        pointToLayer: function(feature, latlng) {
+          console.log(latlng, feature);
+          L.marker(latlng, {
+            icon: pokestop
+          });
+          return {
+            onEachFeature: onEachFeature
+          };
+        }
+      }).addTo(map);
+    });
+  });
+
+}).call(this);
+:ET

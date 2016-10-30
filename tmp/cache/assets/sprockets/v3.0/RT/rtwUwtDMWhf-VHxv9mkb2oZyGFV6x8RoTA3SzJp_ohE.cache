@@ -1,0 +1,75 @@
+I"�(function() {
+  document.addEventListener('turbolinks:load', function() {
+    jQuery(function() {
+      var GymIcon, PokeIcon, googlelayer, gym, lc, map, onEachFeature, pokestop;
+      map = L.map('mapid').setView([-29.9330181, -71.2419626], 12);
+      googlelayer = new L.Google("ROADMAP");
+      map.addLayer(googlelayer);
+      onEachFeature = function(feature, layer) {
+        if (feature.properties && feature.properties.popupContent) {
+          layer.bindPopup(feature.properties.popupContent);
+        }
+      };
+      PokeIcon = L.Icon.extend({
+        options: {
+          iconSize: [32, 32],
+          iconAnchor: [0, 32],
+          popupAnchor: [16, -32]
+        }
+      });
+      pokestop = new PokeIcon({
+        iconUrl: '/assets/pokestop-93043293465c456b8f3b41151d9540691a3a2927a840a5048b5b5c205fc378b3.png'
+      });
+      $.getJSON('/geopuntos/pokestops.json', function(data) {
+        L.geoJson(data, {
+          pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+              icon: pokestop
+            });
+          },
+          onEachFeature: onEachFeature
+        }).addTo(map);
+      });
+      GymIcon = L.Icon.extend({
+        options: {
+          iconSize: [32, 32],
+          iconAnchor: [12, 32],
+          popupAnchor: [0, -32]
+        }
+      });
+      gym = new GymIcon({
+        iconUrl: '/assets/gym-38b2371ae91a7eab22e4af74004f7e2888de17bbb9d6470f6dfbada8e98f72ee.png'
+      });
+      $.getJSON('/geopuntos/gyms.json', function(data) {
+        L.geoJson(data, {
+          pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+              icon: gym
+            });
+          },
+          onEachFeature: onEachFeature
+        }).addTo(map);
+      });
+      lc = L.control.locate({
+        drawCircle: true,
+        circlePadding: [0, 0],
+        locateOptions: {
+          setView: true,
+          watch: true
+        },
+        strings: {
+          title: "Haz click para ver/cancelar tu ubicación.",
+          popup: "Tu ubicación",
+          outsideMapBoundsMsg: "You seem located outside the boundaries of the map"
+        }
+      }).addTo(map);
+      return lc.start();
+    });
+  });
+
+  document.addEventListener('turbolinks:load', function() {
+    $('#cover').fadeOut(1000);
+  });
+
+}).call(this);
+:ET

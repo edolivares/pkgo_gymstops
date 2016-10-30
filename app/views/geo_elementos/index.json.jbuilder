@@ -1,0 +1,1 @@
+json.array! @geo_elementos, partial: 'geo_elementos/geo_elemento', as: :geo_elemento
